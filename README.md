@@ -1,9 +1,20 @@
 # movie-finder
 
 ## Project setup
+
+### Install dependencies
 ```
 yarn install
 ```
+
+### Setup API KEY
+in `.env` file put your API KEY from http://www.omdbapi.com/
+
+**EXAMPLE**
+
+ `VUE_APP_OMD_API_KEY = ap1k3y`
+
+ 
 
 ### Compiles and hot-reloads for development
 ```
