@@ -1,6 +1,6 @@
 <template>
   <v-container mt-5 pt-5>
-    <MovieSlider :movies="movies" />
+    <MovieSlider v-if="movies && movies.length" :movies="movies" />
   </v-container>
 </template>
 

@@ -9,7 +9,7 @@
       </v-list-item-content>
     </v-list-item>
     <v-divider></v-divider>
-    <v-card-actions @click="showDetails">
+    <v-card-actions @click="showDetails(movie)">
       <v-btn color="orange darken-2" text> Details </v-btn>
       <v-spacer></v-spacer>
       <v-btn icon>
@@ -52,8 +52,11 @@ export default {
     },
   },
   methods: {
-    showDetails() {
+    showDetails(movie) {
       this.show = !this.show;
+      if (!movie.Director) {
+        this.$store.dispatch('getMovieDetails', movie.imdbID);
+      }
     },
   },
 };
