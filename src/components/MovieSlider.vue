@@ -3,6 +3,8 @@
     <swiper-slide v-for="(movie, index) in movies" :key="index">
       <MovieCard :movie="movie" />
     </swiper-slide>
+    <div class="swiper-button swiper-button-prev" slot="button-prev"></div>
+    <div class="swiper-button swiper-button-next" slot="button-next"></div>
     <div class="swiper-pagination" slot="pagination"></div>
   </swiper>
 </template>
@@ -33,8 +35,12 @@ export default {
     model: 0,
     swiperOption: {
       slidesPerView: 3,
-      slidesPerColumn: 2,
-      spaceBetween: 30,
+      slidesPerColumn: 1,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
@@ -44,13 +50,23 @@ export default {
 };
 </script>
 
-<style  scoped>
+<style scoped>
 .swiper {
-  height: 430px;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
 }
 .swiper-slide {
   height: auto;
+}
+.swiper-button {
+  background-color: #000000c9;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  padding: 2em;
+}
+.swiper-pagination {
+  position: static;
 }
 </style>
