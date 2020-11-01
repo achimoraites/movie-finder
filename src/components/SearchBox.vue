@@ -2,9 +2,9 @@
   <v-container>
      <v-text-field
       v-model="searchValue"
-      append-icon="mdi-magnify"
-      @click:append="search"
+      :append-icon="icon"
       :label="label"
+      @click:append="search"
      >
      </v-text-field>
   </v-container>

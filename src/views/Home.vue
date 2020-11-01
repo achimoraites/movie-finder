@@ -22,6 +22,7 @@ export default {
   methods: {
     onSearch(value) {
       console.log(value);
+      this.$store.dispatch('getMoviesByTitle', value);
     },
   },
 };
