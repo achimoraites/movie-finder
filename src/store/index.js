@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import EventBus, { ERROR } from '@/utils/eventBus';
 import axios from 'axios';
 import router from '../router';
 
@@ -24,10 +25,22 @@ export default new Vuex.Store({
     getMoviesByTitle({ commit }, title) {
       axios.get(`${API}?apikey=${API_KEY}&s=${title}&type=movie`)
         .then((res) => {
-          if (res.data && res.data.Search) {
+          if (res.data.Search) {
             commit('setMovies', res.data.Search);
             router.push('/results');
+          } else {
+            EventBus.$emit(ERROR, {
+              message: res.data.Error,
+              type: ERROR,
+            });
+            commit('setMovies', []);
           }
+        })
+        .catch((err) => {
+          EventBus.$emit(ERROR, {
+            message: err.message,
+            type: ERROR,
+          });
         });
     },
     getMovieDetails({ commit }, imdbID) {
@@ -36,6 +49,11 @@ export default new Vuex.Store({
           if (res.data) {
             commit('setMovie', res.data);
           }
+        }).catch((err) => {
+          EventBus.$emit(ERROR, {
+            message: err.message,
+            type: ERROR,
+          });
         });
     },
   },

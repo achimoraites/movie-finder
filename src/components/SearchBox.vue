@@ -5,6 +5,7 @@
       :append-icon="icon"
       :label="label"
       @click:append="search"
+      @keyup.enter="search"
      >
      </v-text-field>
   </v-container>

@@ -1,6 +1,6 @@
 <template>
  <v-app-bar app>
-      <div class="d-flex align-center">
+      <div @click="goHome" class="d-flex align-center brand">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
@@ -9,7 +9,7 @@
           transition="scale-transition"
           width="40"
         />
-        <h1>Movie Finder</h1>
+        <h3>Movie Finder</h3>
       </div>
 
       <v-spacer></v-spacer>
@@ -32,5 +32,18 @@ export default {
       return this.$vuetify.theme.dark ? 'Toggle Light Theme' : 'Toggle Dark Theme';
     },
   },
+  methods: {
+    goHome() {
+      if (this.$router.currentRoute.name !== 'Home') {
+        this.$router.push('/');
+      }
+    },
+  },
 };
 </script>
+
+<style scoped>
+.brand {
+  cursor: pointer;
+}
+</style>
