@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import axios from 'axios';
+import router from '../router';
 
 Vue.use(Vuex);
 const API = process.env.VUE_APP_OMD_BASE_URL;
@@ -21,10 +22,11 @@ export default new Vuex.Store({
   },
   actions: {
     getMoviesByTitle({ commit }, title) {
-      axios.get(`${API}?apikey=${API_KEY}&s=${title}`)
+      axios.get(`${API}?apikey=${API_KEY}&s=${title}&type=movie`)
         .then((res) => {
           if (res.data && res.data.Search) {
             commit('setMovies', res.data.Search);
+            router.push('/results');
           }
         });
     },

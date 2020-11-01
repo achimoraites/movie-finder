@@ -37,6 +37,23 @@ export default {
       slidesPerView: 3,
       slidesPerColumn: 1,
       spaceBetween: 20,
+      breakpoints: {
+        // when window width is <= 320px
+        0: {
+          slidesPerView: 1,
+          spaceBetweenSlides: 10,
+        },
+        // when window width is <= 480px
+        480: {
+          slidesPerView: 2,
+          spaceBetweenSlides: 20,
+        },
+        // when window width is <= 640px
+        640: {
+          slidesPerView: 3,
+          spaceBetweenSlides: 30,
+        },
+      },
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',

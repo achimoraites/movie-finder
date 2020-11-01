@@ -17,5 +17,10 @@ export default {
       return this.$store.state.movies;
     },
   },
+  mounted() {
+    if (!this.movies.length) {
+      this.$router.push('/');
+    }
+  },
 };
 </script>
