@@ -33,7 +33,9 @@ export default new Vuex.Store({
         .then((res) => {
           if (res.data.Search) {
             commit('setMovies', res.data.Search);
-            router.push('/results');
+            if (router.currentRoute.name !== 'Results') {
+              router.push('/results');
+            }
           } else {
             EventBus.$emit(ERROR, {
               message: res.data.Error,
