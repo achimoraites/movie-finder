@@ -2,6 +2,7 @@
   <v-container mt-5 pt-5>
     <SearchBox
       :label="label"
+      :loading="loading"
       @onSearch="onSearch"
      />
   </v-container>
@@ -19,6 +20,11 @@ export default {
   data: () => ({
     label: 'Search by Title',
   }),
+  computed: {
+    loading() {
+      return this.$store.state.loading;
+    },
+  },
   methods: {
     onSearch(value) {
       this.$store.dispatch('getMoviesByTitle', value);
