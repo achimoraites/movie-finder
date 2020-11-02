@@ -4,6 +4,7 @@
       v-model="searchValue"
       :append-icon="icon"
       :label="label"
+      :loading="loading"
       @click:append="search"
       @keyup.enter="search"
      >
@@ -22,6 +23,10 @@ export default {
     icon: {
       type: String,
       default: 'mdi-magnify',
+    },
+    loading: {
+      type: Boolean,
+      default: false,
     },
   },
   data: () => ({
